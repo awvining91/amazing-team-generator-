@@ -7,24 +7,34 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 
-//require team files
+
+
 const Engineer = require('./lib/engineer');
+
 const Manager = require('./lib/manager');
+
 const Intern = require('./lib/intern');
 
-//create array for roles
+
+//Empty arrays to hold needed data
+
 const managers = [];
+
 const engineers = [];
+
 const interns = [];
 
-//confirm new team member
+
+//Do you want another team member?
+
 const compileTeamMember = () => {
     inquirer
+
         .prompt ([
             {
                 type: 'confirm',
                 name: 'compileTeamMember',
-                message: 'Want to add someone else?',
+                message: 'Want to have another team member?',
             },
         ])
         .then((answers) => {
@@ -45,6 +55,10 @@ const compileTeamMember = () => {
             }
         });
 };
+
+
+//-Questions and such--------------------------------------------------------------------------------------------------------------//
+
 
 //question1 
 const question1 = () => {
@@ -181,6 +195,10 @@ const managerQuestions = () => {
         });
 };
 
+
+//-Logic for adding html parts----------------------------------------------------------------------------------------------------------------------------//
+
+
 //delete html file in none
 const deleteHtml = () => {
     fs.unlinkSync('./index.html');
@@ -216,6 +234,12 @@ const internGenerator = () => {
 const bottomHtmlFile = () => {
     fs.appendFileSync('index.html', generateBtm());
 };
+
+
+
+
+// Generate html stuff----------------------------------------------------------------------------------------------------------------------------------//
+
 
 const generateHTML = () => {
    return ` 
@@ -350,3 +374,18 @@ const generateBtm = () => {
 
 }
     
+/* References
+
+https://getbootstrap.com/docs/4.0/components/card/#card-styles
+https://benyoss4.medium.com/what-is-js-subclassing-and-how-its-a-time-saver-be46995c95ce
+https://www.youtube.com/watch?v=K0vzRHZEsxc&list=WL&index=34&t=3s
+
+https://www.youtube.com/watch?v=NPgg3rpZ_RU
+https://www.youtube.com/watch?v=VVGgacjzc2Y
+class mini-project
+
+class activities
+https://benyoss4.medium.com/what-is-js-subclassing-and-how-its-a-time-saver-be46995c95ce
+Lots of stack overflow :)
+
+*/
