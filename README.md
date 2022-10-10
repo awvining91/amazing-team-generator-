@@ -20,6 +20,8 @@ We are finishing up express.js and I will get started on the new challenge for t
 
 ## Github Link
 
+https://github.com/awvining91/amazing-team-generator-
+
 ## Video Link
 
 ## References Used
@@ -32,4 +34,9 @@ We are finishing up express.js and I will get started on the new challenge for t
 - class mini-project
 - class activities
 - https://dev.to/cschratz/inheritance-and-subclasses-using-es6-3nc
+- https://www.youtube.com/watch?v=K0vzRHZEsxc&list=WL&index=34&t=3s
+- https://www.youtube.com/watch?v=NPgg3rpZ_RU
+- https://www.youtube.com/watch?v=VVGgacjzc2Y
+- https://www.youtube.com/watch?v=ENrzD9HAZK4
+
 
