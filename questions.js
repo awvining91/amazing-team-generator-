@@ -24,7 +24,7 @@ const compileTeamMember = () => {
             {
                 type: 'confirm',
                 name: 'compileTeamMember',
-                message: 'Would you like to add another team member?',
+                message: 'Want to add someone else?',
             },
         ])
         .then((answers) => {
@@ -53,7 +53,7 @@ const question1 = () => {
             {
                 type: 'list',
                 name: 'role',
-                message: 'What is employees role?',
+                message: 'What job do they have?',
                 choices: ['Manager', 'Engineer', 'Intern'],
             },
         ])
@@ -77,22 +77,22 @@ const engineerQuestions = () => {
             {
                 type: 'input',
                 name: 'name',
-                message: 'What is engineers name?',
+                message: 'What is their name?',
             },
             {
                 type: 'input',
                 name: 'id',
-                message: 'What is engineers id number?',
+                message: 'What is their id',
             },
             {
                 type: 'input',
                 name: 'email',
-                message: 'What is engineers email?',
+                message: 'What is their e-mail?',
             },
             {
                 type: 'input',
                 name: 'github',
-                message: 'What is engineers github username (case sensitive)?',
+                message: 'What is their github name?',
             },
         ])
         .then((answers) => {
@@ -114,22 +114,22 @@ const internQuestions = () => {
             {
                 type: 'input',
                 name: 'name',
-                message: 'What is the interns name?',
+                message: 'What is the name?',
             },
             {
                 type: 'input',
                 name: 'id',
-                message: 'What is the interns id number?',
+                message: 'What is the id?',
             },
             {
                 type: 'input',
                 name: 'email',
-                message: 'What is the interns email?',
+                message: 'What is the email?',
             },
             {
                 type: 'input',
                 name: 'school',
-                message: 'What school did the intern attend?',
+                message: 'What university are they from?',
             },
         ])
         .then((answers) => {
@@ -151,22 +151,22 @@ const managerQuestions = () => {
             {
                 type: 'input',
                 name: 'name',
-                message: 'What is the managers name?',
+                message: 'What is the boss called?',
             },
             {
                 type: 'input',
                 name: 'id',
-                message: 'What is the managers id number?',
+                message: 'What is the id?',
             },
             {
                 type: 'input',
                 name: 'email',
-                message: 'What is the managers email?',
+                message: 'What is the email?',
             },
             {
                 type: 'input',
                 name: 'officeNumber',
-                message: 'What is the managers office number?',
+                message: 'What is their phone number?',
             },
         ])
         .then((answers) => {
