@@ -25,11 +25,11 @@ We are finishing up express.js and I will get started on the new challenge for t
 ## References Used
 
     
--https://getbootstrap.com/docs/4.3/getting-started/introduction/
+- https://getbootstrap.com/docs/4.3/getting-started/introduction/
 - https://getbootstrap.com/docs/4.0/components/card/
--https://getbootstrap.com/docs/4.0/components/card/#card-styles
--https://benyoss4.medium.com/what-is-js-subclassing-and-how-its-a-time-saver-be46995c95ce
--class mini-project
--class activities
--https://dev.to/cschratz/inheritance-and-subclasses-using-es6-3nc
+- https://getbootstrap.com/docs/4.0/components/card/#card-styles
+- https://benyoss4.medium.com/what-is-js-subclassing-and-how-its-a-time-saver-be46995c95ce
+- class mini-project
+- class activities
+- https://dev.to/cschratz/inheritance-and-subclasses-using-es6-3nc
 
