@@ -64,7 +64,7 @@ const addNewPerson = () => {
 
                 intCreator();
 
-                bottomHtmlFile();
+                LowerWebsite();
 
                 return info;
             }
@@ -109,6 +109,7 @@ const firstQ = () => {
 firstQ();
 
 //Prompts for the awesome engineer
+
 const engPrompts = () => {
 
     inquirer
@@ -149,8 +150,10 @@ const engPrompts = () => {
         });
 };
 
-//intern questions
+//Prompts for the future employee to be
+
 const intPrompts = () => {
+
     inquirer
         .prompt ([
             {
@@ -158,6 +161,7 @@ const intPrompts = () => {
                 name: 'name',
                 message: 'What is the name?',
             },
+
             {
                 type: 'input',
                 name: 'id',
@@ -165,11 +169,13 @@ const intPrompts = () => {
             },
 
 
+
             {
                 type: 'input',
                 name: 'email',
                 message: 'What is the email?',
             },
+
             {
                 type: 'input',
                 name: 'school',
@@ -178,7 +184,9 @@ const intPrompts = () => {
         ])
 
         .then((info) => {
+
             const newIntern = new Intern (
+
                 info.name,
                 info.id,
                 info.email,
@@ -200,6 +208,7 @@ const bossPrompts = () => {
                 type: 'input',
                 name: 'name',
                 message: 'What is the boss called?',
+
             },
             {
                 type: 'input',
@@ -222,53 +231,61 @@ const bossPrompts = () => {
             const newManager = new Manager(
                 info.name,
                 info.id,
+
                 info.email,
                 info.officeNumber,
             );
-            
+
             managers.push(newManager);
+
             addNewPerson();
         });
 };
 
 
-//-Logic for adding html parts----------------------------------------------------------------------------------------------------------------------------//
+//-Logic for adding the html parts----------------------------------------------------------------------------------------------------------------------------//
 
 
-//delete html file in none
+//Get rid of the old data in index.html to avoid using old stuff
+
 const eraseOldStuff = () => {
     fs.unlinkSync('./index.html');
 };
 
-//append top html
+//Add in the upper part of the website
+
 const upperWebsite = () => {
-    fs.appendFileSync('index.html', generateHTML());
+    fs.appendFileSync('index.html', createWebsite());
 };
 
-//append manager
+//Add in info for the Boss that was entered
+
 const bossCreator = () => {
-    managers.forEach((manager => {
-        fs.appendFileSync('index.html', generateMgr(manager));
+    managers.forEach((boss => {
+        fs.appendFileSync('index.html', makeBoss(boss));
     }));
 };
 
-//append engineer
+//Add new info to the engineer section on website
+
 const engCreator = () => {
     engineers.forEach((engineer => {
-        fs.appendFileSync('index.html', generateEng(engineer));
+        fs.appendFileSync('index.html', makeEng(engineer));
     }));
 };
 
-//append intern
+//Add intern info to the website
+
 const intCreator = () => {
     interns.forEach((intern => {
-        fs.appendFileSync('index.html', generateIntern(intern));
+        fs.appendFileSync('index.html', makeInt(intern));
     }));
 };
 
-//append html bottom
-const bottomHtmlFile = () => {
-    fs.appendFileSync('index.html', generateBtm());
+//Add in the bottom chunk of the new website
+
+const LowerWebsite = () => {
+    fs.appendFileSync('index.html', createLowerSite());
 };
 
 
@@ -277,7 +294,7 @@ const bottomHtmlFile = () => {
 // Generate html stuff----------------------------------------------------------------------------------------------------------------------------------//
 
 
-const generateHTML = () => {
+const createWebsite = () => {
    return ` 
    
    
@@ -312,7 +329,7 @@ const generateHTML = () => {
 }    
 
 //add intern card html
-const generateIntern = (intern) => {
+const makeInt = (intern) => {
     return `
     
     <div class="container mb-2   shadow-lg ">
@@ -341,7 +358,7 @@ const generateIntern = (intern) => {
 }
 
 //add engineer card html
-const generateEng = (engineer) => {
+const makeEng = (engineer) => {
     return `
     
     
@@ -373,7 +390,7 @@ const generateEng = (engineer) => {
 }
 
  //add manager card html
-const generateMgr = (manager) => {
+const makeBoss = (boss) => {
     return `
     
     
@@ -389,11 +406,11 @@ const generateMgr = (manager) => {
     </div>
             <div class="employee">
 
-                <p>Name: ${manager.name}</p>
-                <p>E-email: <a href="mailto:${manager.email}">${manager.email}</a></p>
-                <p>Id-Number: ${manager.id}</p>
-                <p>Job: ${manager.role}</p>
-                <p>Phone: ${manager.officeNumber}</p>
+                <p>Name: ${boss.name}</p>
+                <p>E-email: <a href="mailto:${boss.email}">${boss.email}</a></p>
+                <p>Id-Number: ${boss.id}</p>
+                <p>Job: ${boss.role}</p>
+                <p>Phone: ${boss.officeNumber}</p>
         </div>
 
 </div>
@@ -404,7 +421,7 @@ const generateMgr = (manager) => {
 
 //append the lower part of the frontend html
 
-const generateBtm = () => {
+const createLowerSite = () => {
     return `</body>
     </html>`
 
@@ -419,6 +436,8 @@ https://www.youtube.com/watch?v=K0vzRHZEsxc&list=WL&index=34&t=3s
 https://www.youtube.com/watch?v=NPgg3rpZ_RU
 https://www.youtube.com/watch?v=VVGgacjzc2Y
 class mini-project
+https://www.freecodecamp.org/news/how-javascript-implements-oop/
+https://www.geeksforgeeks.org/introduction-object-oriented-programming-javascript/
 
 class activities
 https://benyoss4.medium.com/what-is-js-subclassing-and-how-its-a-time-saver-be46995c95ce
