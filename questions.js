@@ -1,6 +1,6 @@
 //Welcome to the main page! I hope you like my project!
 
-//add needed dependencies like inquireer and fs
+//Add needed dependencies like inquireer and fs
 
 const inquirer = require('inquirer');
 
@@ -53,7 +53,9 @@ const addNewPerson = () => {
                 module.exports = engineers;
 
                 module.exports = interns;
-                //new local methods to help with html generation
+
+                //New local methods to help with html generation
+
                 eraseOldStuff();
 
                 upperWebsite();
@@ -328,7 +330,8 @@ const createWebsite = () => {
     `
 }    
 
-//add intern card html
+//Create the html for the intern
+
 const makeInt = (intern) => {
     return `
     
@@ -357,7 +360,8 @@ const makeInt = (intern) => {
 `
 }
 
-//add engineer card html
+// Create the card for the engineer
+
 const makeEng = (engineer) => {
     return `
     
@@ -389,8 +393,10 @@ const makeEng = (engineer) => {
 `
 }
 
- //add manager card html
+ //Create card for the boss
+
 const makeBoss = (boss) => {
+
     return `
     
     
@@ -419,14 +425,18 @@ const makeBoss = (boss) => {
 `
 }
 
-//append the lower part of the frontend html
+//Finally, add in the last lower chunk of the website
 
 const createLowerSite = () => {
+
     return `</body>
     </html>`
 
 }
     
+//I hope you enjoyed my project! :)
+
+
 /* References
 
 https://getbootstrap.com/docs/4.0/components/card/#card-styles

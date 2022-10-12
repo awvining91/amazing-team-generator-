@@ -24,6 +24,15 @@ https://github.com/awvining91/amazing-team-generator-
 
 ## Video Link
 
+Google Drive Link
+
+https://drive.google.com/file/d/18AwS3gFrVk0_wx5lwQlEZT1UWpPuN1hr/view
+
+Youtube Link
+
+https://youtu.be/XGRuSQItmSU 
+
+
 ## References Used
 
     
