@@ -1,4 +1,4 @@
-
+//Welcome to the main page! I hope you like my project!
 
 //add needed dependencies like inquireer and fs
 
@@ -27,31 +27,46 @@ const interns = [];
 
 //Do you want another team member?
 
-const compileTeamMember = () => {
+const addNewPerson = () => {
+
     inquirer
 
         .prompt ([
             {
                 type: 'confirm',
-                name: 'compileTeamMember',
+                name: 'addNewPerson',
                 message: 'Want to have another team member?',
             },
         ])
-        .then((answers) => {
-            if(answers.compileTeamMember === true) {
-                question1();
+
+        .then((info) => {
+
+            if(info.addNewPerson === true) {
+                firstQ();
+
             } else {
+
                 console.log(managers, engineers, interns);
+
                 module.exports = managers;
+
                 module.exports = engineers;
+
                 module.exports = interns;
-                deleteHtml();
-                topHtmlFile();
-                managerGenerator();
+                //new local methods to help with html generation
+                eraseOldStuff();
+
+                upperWebsite();
+
+                bossCreator();
+
                 engineerGenerator();
+
                 internGenerator();
+
                 bottomHtmlFile();
-                return answers;
+
+                return info;
             }
         });
 };
@@ -60,8 +75,9 @@ const compileTeamMember = () => {
 //-Questions and such--------------------------------------------------------------------------------------------------------------//
 
 
-//question1 
-const question1 = () => {
+//The first question prompt
+
+const firstQ = () => {
     inquirer
         .prompt ([
             {
@@ -71,18 +87,18 @@ const question1 = () => {
                 choices: ['Manager', 'Engineer', 'Intern'],
             },
         ])
-        .then((answers) => {
-            if (answers.role === 'Manager') {
+        .then((info) => {
+            if (info.role === 'Manager') {
                 managerQuestions();
-            } else if (answers.role === 'Engineer') {
+            } else if (info.role === 'Engineer') {
                 engineerQuestions();
-            } else if (answers.role === 'Intern') {
+            } else if (info.role === 'Intern') {
                 internQuestions();
             }
         });
 };
 
-question1();
+firstQ();
 
 //engineer questions
 const engineerQuestions = () => {
@@ -109,15 +125,15 @@ const engineerQuestions = () => {
                 message: 'What is their github name?',
             },
         ])
-        .then((answers) => {
+        .then((info) => {
             const newEngineer = new Engineer (
-                answers.name,
-                answers.id,
-                answers.email,
-                answers.github
+                info.name,
+                info.id,
+                info.email,
+                info.github
             );
             engineers.push(newEngineer);
-            compileTeamMember();
+            addNewPerson();
         });
 };
 
@@ -146,15 +162,15 @@ const internQuestions = () => {
                 message: 'What university are they from?',
             },
         ])
-        .then((answers) => {
+        .then((info) => {
             const newIntern = new Intern (
-                answers.name,
-                answers.id,
-                answers.email,
-                answers.school,
+                info.name,
+                info.id,
+                info.email,
+                info.school,
             );
             interns.push(newIntern);
-            compileTeamMember();
+            addNewPerson();
         });
 };
 
@@ -183,15 +199,15 @@ const managerQuestions = () => {
                 message: 'What is their phone number?',
             },
         ])
-        .then((answers) => {
+        .then((info) => {
             const newManager = new Manager(
-                answers.name,
-                answers.id,
-                answers.email,
-                answers.officeNumber,
+                info.name,
+                info.id,
+                info.email,
+                info.officeNumber,
             );
             managers.push(newManager);
-            compileTeamMember();
+            addNewPerson();
         });
 };
 
@@ -200,17 +216,17 @@ const managerQuestions = () => {
 
 
 //delete html file in none
-const deleteHtml = () => {
+const eraseOldStuff = () => {
     fs.unlinkSync('./index.html');
 };
 
 //append top html
-const topHtmlFile = () => {
+const upperWebsite = () => {
     fs.appendFileSync('index.html', generateHTML());
 };
 
 //append manager
-const managerGenerator = () => {
+const bossCreator = () => {
     managers.forEach((manager => {
         fs.appendFileSync('index.html', generateMgr(manager));
     }));
