@@ -60,9 +60,9 @@ const addNewPerson = () => {
 
                 bossCreator();
 
-                engineerGenerator();
+                engCreator();
 
-                internGenerator();
+                intCreator();
 
                 bottomHtmlFile();
 
@@ -70,7 +70,7 @@ const addNewPerson = () => {
             }
         });
 };
-
+// The methods will get defined later, but are called here, so everything 'hopefully' works correctly
 
 //-Questions and such--------------------------------------------------------------------------------------------------------------//
 
@@ -79,30 +79,40 @@ const addNewPerson = () => {
 
 const firstQ = () => {
     inquirer
+
         .prompt ([
+
             {
                 type: 'list',
                 name: 'role',
                 message: 'What job do they have?',
-                choices: ['Manager', 'Engineer', 'Intern'],
+                choices: ['The Boss', 'Engineer', 'Intern'],
             },
         ])
+
         .then((info) => {
-            if (info.role === 'Manager') {
-                managerQuestions();
+
+            if (info.role === 'The Boss') {
+                bossPrompts();
+
             } else if (info.role === 'Engineer') {
-                engineerQuestions();
+                engPrompts();
+
+
             } else if (info.role === 'Intern') {
-                internQuestions();
+                intPrompts();
+
             }
         });
 };
 
 firstQ();
 
-//engineer questions
-const engineerQuestions = () => {
+//Prompts for the awesome engineer
+const engPrompts = () => {
+
     inquirer
+
         .prompt ([
             {
                 type: 'input',
@@ -112,7 +122,7 @@ const engineerQuestions = () => {
             {
                 type: 'input',
                 name: 'id',
-                message: 'What is their id',
+                message: 'What is their id?',
             },
             {
                 type: 'input',
@@ -126,19 +136,21 @@ const engineerQuestions = () => {
             },
         ])
         .then((info) => {
+
             const newEngineer = new Engineer (
                 info.name,
                 info.id,
                 info.email,
                 info.github
             );
+
             engineers.push(newEngineer);
             addNewPerson();
         });
 };
 
 //intern questions
-const internQuestions = () => {
+const intPrompts = () => {
     inquirer
         .prompt ([
             {
@@ -151,6 +163,8 @@ const internQuestions = () => {
                 name: 'id',
                 message: 'What is the id?',
             },
+
+
             {
                 type: 'input',
                 name: 'email',
@@ -162,6 +176,7 @@ const internQuestions = () => {
                 message: 'What university are they from?',
             },
         ])
+
         .then((info) => {
             const newIntern = new Intern (
                 info.name,
@@ -174,9 +189,12 @@ const internQuestions = () => {
         });
 };
 
-//manager questions
-const managerQuestions = () => {
+//Prompts for the boss
+
+const bossPrompts = () => {
+
     inquirer
+
         .prompt ([
             {
                 type: 'input',
@@ -199,6 +217,7 @@ const managerQuestions = () => {
                 message: 'What is their phone number?',
             },
         ])
+
         .then((info) => {
             const newManager = new Manager(
                 info.name,
@@ -206,6 +225,7 @@ const managerQuestions = () => {
                 info.email,
                 info.officeNumber,
             );
+            
             managers.push(newManager);
             addNewPerson();
         });
@@ -233,14 +253,14 @@ const bossCreator = () => {
 };
 
 //append engineer
-const engineerGenerator = () => {
+const engCreator = () => {
     engineers.forEach((engineer => {
         fs.appendFileSync('index.html', generateEng(engineer));
     }));
 };
 
 //append intern
-const internGenerator = () => {
+const intCreator = () => {
     interns.forEach((intern => {
         fs.appendFileSync('index.html', generateIntern(intern));
     }));
